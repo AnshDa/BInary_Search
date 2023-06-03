@@ -1,0 +1,23 @@
+# ITERATIVE METHOD
+___________________________________________________________________
+int search(vector<int>& nums, int target) {
+    int low=0,high=nums.size()-1;
+    while(low<=high){
+        int mid = low+(high-low)/2;
+        if(nums[mid]==target) return mid;
+        else if(nums[mid]>target) high=mid-1;
+        else low=mid+1;
+    }
+    return -1;
+}
+
+#RECURSIVE METHOD
+_______________________________________________________________________
+
+int f(int low,int high, vector<int>& nums,int target){
+    if(low>high) return -1;
+    int mid = low+(high-low)/2;
+    if(nums[mid]==target) return mid;
+    else if(nums[mid]<target) return f(mid+1,high,nums,target);
+    else return f(low,mid-1,nums,target);
+}
